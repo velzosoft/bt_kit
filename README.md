@@ -12,9 +12,9 @@ Bluetooth Classic and BLE for Flutter on Android and iOS. bt_kit calls the platf
 - **The whole platform API underneath.** Every Android and iOS Bluetooth API is available next to the unified API, and the two work together.
 - **Fakes for app tests** that run on the host, with no radio.
 
-The example app finding an ESP32 board and exchanging data with it in both directions:
+The example app finding an ESP32 board and exchanging data with it in both directions. Click the image to play the video:
 
-https://github.com/user-attachments/assets/5f4e3e35-089b-467a-b40e-14c3fb6880a4
+<a href="https://github.com/user-attachments/assets/5f4e3e35-089b-467a-b40e-14c3fb6880a4" target="_blank"><img src="https://raw.githubusercontent.com/velzosoft/bt_kit/main/doc/images/demo.jpg" alt="bt_kit example app demo video" width="320"></a>
 
 ## Platform support
 
