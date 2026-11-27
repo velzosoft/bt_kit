@@ -1,0 +1,82 @@
+menu "Board demo"
+
+    orsource "$IDF_PATH/examples/common_components/env_caps/$IDF_TARGET/Kconfig.env_caps"
+
+    choice BOARD_LED_KIND
+        prompt "LED kind"
+        default BOARD_LED_KIND_SINGLE
+        help
+            The LED that shows the link. Colors need an RGB or an addressable
+            LED; a single-color LED shows every state through its blink
+            pattern and brightness.
+
+        config BOARD_LED_KIND_SINGLE
+            bool "Single color"
+        config BOARD_LED_KIND_RGB
+            bool "RGB, one pin per color"
+        config BOARD_LED_KIND_ADDRESSABLE
+            bool "Addressable (WS2812)"
+    endchoice
+
+    config BOARD_LED_GPIO
+        int "LED GPIO"
+        depends on !BOARD_LED_KIND_RGB
+        range ENV_GPIO_RANGE_MIN ENV_GPIO_OUT_RANGE_MAX
+        default 18 if BOARD_LED_KIND_ADDRESSABLE
+        default 2
+        help
+            The single-color LED's pin, or the data line of the addressable
+            LED. GPIO 2 drives the blue LED on the ESP32 DevKit V1 and the
+            NodeMCU-32S.
+
+    config BOARD_LED_ACTIVE_LOW
+        bool "The LED lights when its pin is low"
+        depends on BOARD_LED_KIND_SINGLE
+        default n
+
+    config BOARD_RGB_GPIO_RED
+        int "Red GPIO"
+        depends on BOARD_LED_KIND_RGB
+        range ENV_GPIO_RANGE_MIN ENV_GPIO_OUT_RANGE_MAX
+        default 25
+
+    config BOARD_RGB_GPIO_GREEN
+        int "Green GPIO"
+        depends on BOARD_LED_KIND_RGB
+        range ENV_GPIO_RANGE_MIN ENV_GPIO_OUT_RANGE_MAX
+        default 26
+
+    config BOARD_RGB_GPIO_BLUE
+        int "Blue GPIO"
+        depends on BOARD_LED_KIND_RGB
+        range ENV_GPIO_RANGE_MIN ENV_GPIO_OUT_RANGE_MAX
+        default 27
+
+    config BOARD_RGB_COMMON_ANODE
+        bool "Common anode"
+        depends on BOARD_LED_KIND_RGB
+        default n
+        help
+            A common-anode LED lights a color when its pin is low.
+
+    config BOARD_LED_BRIGHTNESS
+        int "Brightness cap"
+        range 1 255
+        default 64
+        help
+            The brightest the LED gets, from 1 to 255. A WS2812 at full power
+            is blinding.
+
+    config BOARD_BUTTON_GPIO
+        int "Button GPIO"
+        range ENV_GPIO_RANGE_MIN ENV_GPIO_IN_RANGE_MAX
+        default 0
+        help
+            GPIO 0 is the BOOT button on nearly every ESP32 board. It only
+            enters download mode when held during reset.
+
+    config BOARD_BUTTON_ACTIVE_LOW
+        bool "The button pulls its pin low when pressed"
+        default y
+
+endmenu

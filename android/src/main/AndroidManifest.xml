@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- CompanionDeviceManager refuses apps that do not declare it; removeBond and the companion picker use it. -->
+    <uses-feature
+        android:name="android.software.companion_device_setup"
+        android:required="false" />
+    <application>
+        <!-- Background scan results; reached only through bt_kit's own PendingIntent. -->
+        <receiver
+            android:name="dev.btkit.BackgroundScanReceiver"
+            android:exported="false" />
+    </application>
+</manifest>
