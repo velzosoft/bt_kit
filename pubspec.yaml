@@ -1,6 +1,6 @@
 name: bt_kit
 description: Bluetooth Classic and BLE for Android and iOS through direct native interop, with a unified Dart API on top. Central and peripheral roles, L2CAP, free for every use.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/velzosoft/bt_kit
 issue_tracker: https://github.com/velzosoft/bt_kit/issues
 topics:

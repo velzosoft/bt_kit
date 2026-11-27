@@ -1,3 +1,7 @@
+## 1.0.1
+
+- The README shows the demo video as a preview image that links to the video, so it appears on pub.dev.
+
 ## 1.0.0
 
 Initial release.
